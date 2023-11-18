@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  tinder-jdbc-db:
+    image: 'postgres'
+    container_name: tinder-jdbc-db
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
