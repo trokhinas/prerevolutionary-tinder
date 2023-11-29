@@ -12,4 +12,5 @@ public class AnketasFilter {
     List<GenderType> genderTypes;
     List<PreferencesType> preferencesTypes;
     List<UUID> excludeUserIds;
+    List<UUID> includeUserIds;
 }
