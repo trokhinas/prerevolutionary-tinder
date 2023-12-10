@@ -1,0 +1,28 @@
+openapi: 3.0.3
+info:
+  title: Prerevolutionary Tinder - Spelling Service 1.0
+  version: 1.0.0
+tags:
+  - name: spelling
+    description: Spelling Service
+paths:
+  /translate:
+    get:
+      summary: Translate string
+      tags:
+        - spelling
+      parameters:
+        - name: resource
+          in: query
+          description: String to translate
+          required: true
+          explode: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            text/plain:
+              schema:
+                type: string

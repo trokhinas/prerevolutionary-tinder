@@ -3,7 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>ru.liga</groupId>
     <artifactId>prerevolutionary-tinder</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -13,6 +12,8 @@
     <modules>
         <module>prerevolutionary-tinder-server</module>
         <module>prerevolutionary-tinder-tgbot-client</module>
+        <module>prerevolutionary-tinder-spelling-service</module>
+        <module>prerevolutionary-tinder-image-service</module>
     </modules>
 
     <properties>
@@ -22,20 +23,42 @@
 
         <!--Common props-->
         <lombok.version>1.18.30</lombok.version>
+        <jetbrains-annotations.version>24.1.0</jetbrains-annotations.version>
 
         <!--Server props-->
+        <spring-boot.version>3.1.5</spring-boot.version>
 
         <!--TG Bot client props-->
     </properties>
 
     <dependencyManagement>
         <dependencies>
-<!--            <dependency>-->
-<!--                <groupId>org.projectlombok</groupId>-->
-<!--                <artifactId>lombok</artifactId>-->
-<!--                <version>${lombok.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jetbrains</groupId>
+                <artifactId>annotations</artifactId>
+                <version>${jetbrains-annotations.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>${jetbrains-annotations.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

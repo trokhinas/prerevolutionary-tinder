@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>prerevolutionary-tinder</artifactId>
+        <groupId>ru.liga</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>prerevolutionary-tinder-image-service</artifactId>
+    <name>Prerevolutionary Tinder [Image Service Root]</name>
+    <packaging>pom</packaging>
+    <modules>
+        <module>prerevolutionary-tinder-image-service-api</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <javax-annotation-api.version>1.3.2</javax-annotation-api.version>
+        <com.google.code.findbugs.version>3.0.2</com.google.code.findbugs.version>
+
+        <!--Plugins version-->
+        <openapi-generator-maven-plugin.version>7.1.0</openapi-generator-maven-plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-webflux</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>${com.google.code.findbugs.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.annotation</groupId>
+                <artifactId>javax.annotation-api</artifactId>
+                <version>${javax-annotation-api.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.openapitools</groupId>
+                    <artifactId>openapi-generator-maven-plugin</artifactId>
+                    <version>${openapi-generator-maven-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <!--Execute generate goal of plugin that do actual client generation-->
+                                <goal>generate</goal>
+                            </goals>
+                            <configuration>
+                                <inputSpec>${project.basedir}/src/main/resources/openapi.yaml</inputSpec>
+                                <generatorName>java</generatorName>
+                                <library>webclient</library>
+                                <generateModelTests>false</generateModelTests>
+                                <generateApiTests>false</generateApiTests>
+
+                                <configOptions>
+                                    <basePackage>ru.liga.tinder.imageservice</basePackage>
+                                    <modelPackage>ru.liga.tinder.imageservice.model</modelPackage>
+                                    <apiPackage>ru.liga.tinder.imageservice.api</apiPackage>
+                                    <invokerPackage>ru.liga.tinder.imageservice.client</invokerPackage>
+                                    <dateLibrary>java8</dateLibrary>
+                                    <openApiNullable>false</openApiNullable>
+                                    <useAbstractionForFiles>true</useAbstractionForFiles>
+                                </configOptions>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

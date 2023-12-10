@@ -1,0 +1,29 @@
+openapi: 3.0.3
+info:
+  title: Prerevolutionary Tinder - Image Service 1.0
+  version: 1.0.0
+tags:
+  - name: images
+    description: Image Service
+paths:
+  /internal/image/from/text/:
+    get:
+      summary: Create image from passed text
+      tags:
+        - images
+      parameters:
+        - name: description
+          in: query
+          description: Text to create image from
+          required: true
+          explode: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary

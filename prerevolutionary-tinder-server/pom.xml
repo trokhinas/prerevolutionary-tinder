@@ -18,8 +18,6 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <spring-boot.version>3.1.5</spring-boot.version>
-
         <mapstruct.version>1.5.5.Final</mapstruct.version>
     </properties>
 
@@ -42,6 +40,16 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>ru.liga</groupId>
+            <artifactId>prerevolutionary-tinder-spelling-service-api</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>ru.liga</groupId>
+            <artifactId>prerevolutionary-tinder-image-service-api</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
