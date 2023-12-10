@@ -1,0 +1,56 @@
+enum preferences_type {
+  "male"
+  "female"
+  "any"
+}
+
+enum gender_type {
+  "male"
+  "female"
+}
+
+table anketas {
+  id uuid [pk]
+  user_id uuid [ref: > users.id]
+  gender gender_type [not null]
+  name varchar(50) [not null]
+  header varchar(50) [not null]
+  description varchar(500)
+  preferences preferences_type [not null, default: 'any']
+
+  created_at timestamptz
+  updated_at timestamptz
+  indexes {
+    user_id
+  }
+}
+
+table users {
+  id uuid [pk]
+}
+
+table tg_users {
+  id uuid [ref: > users.id]
+  telegram_id varchar
+  indexes {
+    (id, telegram_id) [pk]
+    telegram_id
+  }
+}
+
+/*
+initiator_id|target_id
+1           |2
+1           |3
+1           |4
+2           |1
+3           |2
+5           |1
+*/
+table likes {
+  initiator_id uuid [ref: > users.id]
+  target_id uuid [ref: > users.id]
+  indexes{
+    (initiator_id, target_id)[pk]
+  }
+}
